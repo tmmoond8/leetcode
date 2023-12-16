@@ -37,3 +37,24 @@ function gcdOfStrings(str1, str2) {
 }
 
 gcdOfStrings("ABCABC", "ABC");
+var gcdOfStrings = function (str1, str2) {
+  let minStr = str1;
+  let maxStr = str2;
+
+  if (str1.length > str2.length) {
+    minStr = str2;
+    maxStr = str1;
+  }
+
+  for (let i = minStr.length; i > 0; i--) {
+    const s = minStr.substr(0, i);
+    if (
+      minStr.replace(new RegExp(s, "g"), "") === "" &&
+      maxStr.replace(new RegExp(s, "g"), "") === ""
+    ) {
+      return s;
+    }
+  }
+
+  return "";
+};
